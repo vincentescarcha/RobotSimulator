@@ -18,11 +18,17 @@ namespace RobotSimulator
             }
             else
             {
-                string[] lines = File.ReadAllLines(args[0]);
-
-                foreach (string command in lines)
+                try
                 {
-                    ProcessInput(controller, command);
+                    string[] lines = File.ReadAllLines(args[0]);
+                    foreach (string command in lines)
+                    {
+                        ProcessInput(controller, command);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("invalid file");
                 }
             }
         }
